@@ -1,14 +1,23 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
 import routes from "./routes";
+
+let serverIsRunning: boolean = false;
 
 AppDataSource.initialize().then(() => {
   const app = express();
 
   app.use(express.json());
+
+  app.get("/ping", (request: Request, response: Response) => {
+    if (serverIsRunning)
+      response.status(200).json({ status: "OK", version: "0.0.1" });
+  });
+
   app.use(routes);
 
-  return app.listen(process.env.PORT, () =>
-    console.log("Server Running", process.env.PORT)
-  );
+  return app.listen(process.env.PORT, () => {
+    console.log("Server Running", process.env.PORT);
+    serverIsRunning = true;
+  });
 });
