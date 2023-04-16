@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:14-alpine # imagem a ser utilizada
+    restart: always # reinicia automáticamente quando acontece algum erro
+    environment: # o -e do docker run supracitado
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
