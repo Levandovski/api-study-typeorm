@@ -1,0 +1,113 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Create rooms and subjects ",
+    "dateExported": "2023-04-18T18:49:08.781Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "37292ee9-36dd-4f4e-a2d2-f41a5a7c3a5d",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "create video join room",
+            "url": "http://localhost:5002/room/1/create",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-18T15:32:28.350Z",
+            "modified": "2023-04-18T15:32:28.350Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Introdução a aula\",\n  \"url\": \"https://google.com.br\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "10755c57-5ed5-4d32-a541-19af8d4d6a43",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "list all room join subjects",
+            "url": "http://localhost:5002/room",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-04-18T15:32:36.264Z",
+            "modified": "2023-04-18T15:32:36.264Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9bcf8561-4e8c-4c7c-a15c-236e948e3faa",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "create room join subject (adicionando disciplina a sala de aula room)",
+            "url": "http://localhost:5002/room/1/subject",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-04-18T15:32:43.266Z",
+            "modified": "2023-04-18T15:32:43.266Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"subject_id\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8150b7b1-3fe9-42a1-87f7-eecd1330f9c9",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "create subject (disciplina)",
+            "url": "http://localhost:5002/subject",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-04-18T15:32:48.926Z",
+            "modified": "2023-04-18T15:32:48.926Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Portugues\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "21ba8f11-a72e-45b7-bdc2-3dfc16c4e76c",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "create room (aula)",
+            "url": "http://localhost:5002/room",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-04-18T15:32:58.115Z",
+            "modified": "2023-04-18T15:32:58.115Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Introdução\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "06dfa3ef-b663-478c-9539-058f2997459d",
+            "colId": "a562e84c-1a10-4204-9a73-a50eceb3daa8",
+            "containerId": "",
+            "name": "testing api connection",
+            "url": "http://localhost:5002/ping",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-04-18T15:33:07.111Z",
+            "modified": "2023-04-18T15:33:07.111Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
