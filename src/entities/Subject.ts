@@ -15,6 +15,8 @@ export class Subject {
   @Column({ type: "text" })
   name: string;
 
+  //Configurando a tabela ternária, essa configuração poderia ficar em qualquer
+  //de uma das entities seja (room ou subject)
   @ManyToMany(() => Room, (room) => room.subjects)
   @JoinTable({
     name: "room_subject",

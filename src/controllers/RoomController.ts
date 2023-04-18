@@ -59,12 +59,28 @@ export class RoomController {
       if (!subject)
         return response.status(404).json({ message: "Disciplina não existe" });
 
-      await roomRepository.update(idRoom, {
+      const roomUpdate = {
         ...room,
         subjects: [subject],
-      });
+      };
 
-      return response.status(200).json({ message: "" });
+      await roomRepository.save(roomUpdate);
+
+      return response.status(200).send();
+    } catch (error) {
+      return response.status(500).json({ message: "Internal Server Error" });
+    }
+  }
+
+  async list(request: Request, response: Response) {
+    try {
+      const rooms = await roomRepository.find({
+        relations: {
+          subjects: true,
+          videos: true,
+        },
+      });
+      return response.json(rooms);
     } catch (error) {
       return response.status(500).json({ message: "Internal Server Error" });
     }

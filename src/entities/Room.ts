@@ -19,6 +19,7 @@ export class Room {
   @Column({ type: "text", nullable: true })
   description: string;
 
+  //Ao cadastrar algo aqui ele ja faz a ligação automatica na tabela associativa de subject juntando a config criada
   @OneToMany(() => Video, (video) => video.room)
   videos: Video[];
 
