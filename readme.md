@@ -12,3 +12,6 @@
 
 ### npm run migration:generate
 ### npm run migration:run
+
+## After that run the command:
+### npm run dev
