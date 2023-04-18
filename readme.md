@@ -16,6 +16,6 @@
 ## After that run the command:
 ### npm run dev
 
-## Below is the model of entity and relationships of the project
+## Below is the model of entity and relationships of the project:
 
 <img src="./DER.PNG" />
