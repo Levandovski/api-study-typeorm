@@ -19,3 +19,9 @@
 ## Below is the model of entity and relationships of the project:
 
 <img src="./DER.PNG" />
+
+### Mais informações
+
+## More information
+
+### Application made to study the typeorm. This application is for managing classes registration on a study platform. We can have several classes for a subject and several subjects for a class. Each class can also have several linked videos.
