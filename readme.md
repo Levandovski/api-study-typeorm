@@ -20,6 +20,6 @@
 
 <img src="./DER.PNG" />
 
-## More information
+## More information:
 
 ### Application made to study the typeorm. This application is for managing classes registration on a study platform. We can have several classes for a subject and several subjects for a class. Each class can also have several linked videos.
