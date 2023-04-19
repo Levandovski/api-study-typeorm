@@ -1,7 +1,12 @@
 import { Request, Response } from "express";
 import { UserRepository } from "../repositories/userRepository";
-import { BadRequestError } from "../helpers/api-errors";
+import { BadRequestError, UnauthorizedError } from "../helpers/api-errors";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+type JwtPayload = {
+  id: number;
+};
 
 export class UserController {
   async create(request: Request, response: Response) {
@@ -24,6 +29,10 @@ export class UserController {
 
     const { password: _, ...user } = newUser;
 
-    response.status(201).json(user);
+    return response.status(201).json(user);
+  }
+
+  async getProfile(request: Request, response: Response) {
+    return response.json(request.user);
   }
 }
