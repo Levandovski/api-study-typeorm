@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-
 import { z } from "zod";
 
-import { SubjectServices } from "../services/SubjectService";
+import { SubjectServices } from "./SubjectService";
 
 export class SubjectController {
   async create(request: Request, response: Response) {
@@ -11,7 +10,9 @@ export class SubjectController {
     });
 
     const subject = await new SubjectServices().create(
-      createSubjectSchema.parse(request.body)
+      createSubjectSchema.parse({
+        name: request.body.name,
+      })
     );
 
     return response.status(201).json(subject);

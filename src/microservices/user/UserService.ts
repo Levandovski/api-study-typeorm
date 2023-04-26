@@ -1,5 +1,5 @@
-import { BadRequestError } from "../helpers/api-errors";
-import { UserRepository } from "../repositories/userRepository";
+import { BadRequestError } from "../../helpers/api-errors";
+import { UserRepository } from "./userRepository";
 import bcrypt from "bcrypt";
 
 interface ICreate {

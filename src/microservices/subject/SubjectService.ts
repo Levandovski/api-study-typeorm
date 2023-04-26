@@ -1,5 +1,5 @@
-import { BadRequestError } from "../helpers/api-errors";
-import { subjectRepository } from "../repositories/subjectRepository";
+import { BadRequestError } from "../../helpers/api-errors";
+import { subjectRepository } from "./subjectRepository";
 
 interface ICreate {
   name: string;

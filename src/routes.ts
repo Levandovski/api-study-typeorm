@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { SubjectController } from "./controllers/SubjectController";
-import { RoomController } from "./controllers/RoomController";
-import { UserController } from "./controllers/UserController";
-import { LoginController } from "./controllers/LoginController";
+import { SubjectController } from "./microservices/subject/SubjectController";
+import { RoomController } from "./microservices/room/RoomController";
+import { UserController } from "./microservices/user/UserController";
+import { LoginController } from "./microservices/login/LoginController";
 import { authMiddleware } from "./middlewares/authMiddleware";
 
 const routes = Router();

@@ -1,15 +1,15 @@
-import { BadRequestError } from "../helpers/api-errors";
-import { UserRepository } from "../repositories/userRepository";
+import { BadRequestError } from "../../helpers/api-errors";
+import { UserRepository } from "../user/userRepository";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-interface ICreate {
+interface ILogin {
   email: string;
   password: string;
 }
 
 export class LoginService {
-  async login(data: ICreate) {
+  async login(data: ILogin) {
     const { email, password } = data;
 
     const user = await UserRepository.findOneBy({ email });

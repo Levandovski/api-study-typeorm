@@ -1,7 +1,7 @@
-import { BadRequestError, NotFoundError } from "../helpers/api-errors";
-import { roomRepository } from "../repositories/roomRepository";
-import { subjectRepository } from "../repositories/subjectRepository";
-import { videoRepository } from "../repositories/videoRepository";
+import { BadRequestError, NotFoundError } from "../../helpers/api-errors";
+import { roomRepository } from "./roomRepository";
+import { subjectRepository } from "../subject/subjectRepository";
+import { videoRepository } from "./videoRepository";
 
 interface ICreate {
   name: string;
