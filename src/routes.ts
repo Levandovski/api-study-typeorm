@@ -8,7 +8,7 @@ import { authMiddleware } from "./middlewares/authMiddleware";
 const routes = Router();
 
 routes.post("/user", new UserController().create);
-routes.post("/login", new LoginController().create);
+routes.post("/login", new LoginController().login);
 
 routes.use(authMiddleware);
 

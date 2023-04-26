@@ -1,40 +1,28 @@
 import { Request, Response } from "express";
 import { roomRepository } from "../repositories/roomRepository";
-import { videoRepository } from "../repositories/videoRepository";
+
 import { subjectRepository } from "../repositories/subjectRepository";
 import { BadRequestError, NotFoundError } from "../helpers/api-errors";
+import { RoomService } from "../services/RoomService";
 
 export class RoomController {
   async create(request: Request, response: Response) {
-    const { name, description } = request.body;
-
-    const newRoom = roomRepository.create({ name, description });
-
-    await roomRepository.save(newRoom);
-
-    return response.status(201).json(newRoom);
+    const room = await new RoomService().create(request.body);
+    return response.status(201).json(room);
   }
 
   async createVideo(request: Request, response: Response) {
-    const { title, url } = request.body;
-    const { idRoom } = request.params;
-
-    const room = await roomRepository.findOneBy({ id: Number(idRoom) });
-
-    if (!room) throw new BadRequestError("Aula não existe");
-
-    const newVideo = videoRepository.create({
-      title,
-      url,
-      room,
+    const video = await new RoomService().createVideo({
+      ...request.body,
+      ...request.params,
     });
-
-    await videoRepository.save(newVideo);
-
-    return response.status(201).json(newVideo);
+    return response.status(201).json(video);
   }
 
   async roomSubject(request: Request, response: Response) {
+    //Begin
+
+    //End
     const { subject_id } = request.body;
     const { idRoom } = request.params;
 
