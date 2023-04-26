@@ -1,22 +1,19 @@
 import { Request, Response } from "express";
 
 import { z } from "zod";
-import { subjectRepository } from "../repositories/subjectRepository";
-import { BadRequestError } from "../helpers/api-errors";
+
+import { SubjectServices } from "../services/SubjectService";
 
 export class SubjectController {
   async create(request: Request, response: Response) {
     const createSubjectSchema = z.object({
       name: z.string(),
     });
-    const { name } = createSubjectSchema.parse(request.body);
 
-    if (!name) throw new BadRequestError("O nome é obrigatório");
+    const subject = await new SubjectServices().create(
+      createSubjectSchema.parse(request.body)
+    );
 
-    const newSubject = subjectRepository.create({ name });
-
-    await subjectRepository.save(newSubject);
-
-    return response.status(201).json(newSubject);
+    return response.status(201).json(subject);
   }
 }

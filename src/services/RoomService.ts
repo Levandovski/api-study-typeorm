@@ -1,5 +1,6 @@
-import { BadRequestError } from "../helpers/api-errors";
+import { BadRequestError, NotFoundError } from "../helpers/api-errors";
 import { roomRepository } from "../repositories/roomRepository";
+import { subjectRepository } from "../repositories/subjectRepository";
 import { videoRepository } from "../repositories/videoRepository";
 
 interface ICreate {
@@ -47,7 +48,37 @@ export class RoomService {
     return newVideo;
   }
 
-  async roomSubject(data: IRoomSubject) {}
+  async roomSubject(data: IRoomSubject) {
+    const { idRoom, subject_id } = data;
 
-  async list() {}
+    const room = await roomRepository.findOneBy({ id: Number(idRoom) });
+
+    if (!room) throw new NotFoundError("Aula não existe");
+
+    const subject = await subjectRepository.findOneBy({
+      id: Number(subject_id),
+    });
+
+    if (!subject) throw new NotFoundError("Disciplina não existe");
+
+    const roomUpdate = {
+      ...room,
+      subjects: [subject],
+    };
+
+    await roomRepository.save(roomUpdate);
+
+    return;
+  }
+
+  async list() {
+    const rooms = await roomRepository.find({
+      relations: {
+        subjects: true,
+        videos: true,
+      },
+    });
+
+    return rooms;
+  }
 }
